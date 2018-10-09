@@ -1,0 +1,19 @@
+{
+    "colors": {
+        "me": {
+            "close": "#bd9dd4",
+            "medium": "#977da9",
+            "far": "#715e7f"
+        },
+        "do": "#9698c9",
+        "say": {
+            "close": "#fafafa",
+            "medium": "#c8c8c8",
+            "far": "#969696"
+        },
+        "pm": "#c6cd00",
+        "pmReceiver": "#dce166",
+        "whisper": "#7d7d7d",
+        "ooc": "#dddddd"
+    }
+}

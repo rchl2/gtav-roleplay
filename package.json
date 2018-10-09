@@ -1,0 +1,89 @@
+{
+  "name": "gamemode",
+  "version": "0.0.2",
+  "description": "Los Santos Online is a GTA V Roleplay server based on RAGE Multiplayer.",
+  "contributors": [
+    {
+      "name": "Jakub Cała",
+      "email": "jakub.cala97@gmail.com",
+      "url": "https://github.com/kuba9392"
+    },
+    {
+      "name": "rchl2",
+      "url": "https://github.com/rchl2"
+    },
+    {
+      "name": "kubeeek",
+      "url": "https://github.com/kubeeek"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "hot": "webpack-dev-server --mode=development",
+    "prod": "webpack --mode=production --config ./config/webpack.config.js",
+    "dev": "webpack --mode=development --config ./config/webpack.config.js",
+    "start": "nodemon --watch packages --watch client_packages --exec \"./server.exe\""
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "fs-nextra": "^0.3.7",
+    "glob": "^7.1.2",
+    "log4js": "^2.5.3",
+    "moment": "^2.22.2",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.10",
+    "sprintf-js": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.52",
+    "@babel/preset-env": "^7.0.0-beta.52",
+    "@fortawesome/fontawesome-svg-core": "^1.2.0",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0",
+    "@fortawesome/vue-fontawesome": "^0.1.0",
+    "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master",
+    "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#master",
+    "babel-loader": "^8.0.0-beta.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "dotenv": "^6.0.0",
+    "element-ui": "^2.4.4",
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "faker": "^4.1.0",
+    "file-loader": "^1.1.11",
+    "filemanager-webpack-plugin": "^1.0.27",
+    "hard-source-webpack-plugin": "^0.11.0",
+    "html-webpack-harddisk-plugin": "^0.2.0",
+    "html-webpack-plugin": "^4.0.0-alpha",
+    "lodash": "^4.17.10",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
+    "nodemon": "^1.18.3",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.3",
+    "script-ext-html-webpack-plugin": "^1.8.8",
+    "sequelize-cli": "^4.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "url-loader": "^1.0.1",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LosSantosOnline/gamemode"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LosSantosOnline/gamemode/issues"
+  },
+  "homepage": "https://github.com/LosSantosOnline/gamemode#readme"
+}

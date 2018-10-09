@@ -1,0 +1,15 @@
+bt.dat
+node.dll
+server.exe
+
+/logs
+/bridge
+/plugins
+/idea
+/.idea
+/node_modules
+conf.json
+/client_packages/.listcache
+/client_packages/LSOnline/browser/dist
+/maps
+.env

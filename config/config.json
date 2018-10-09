@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "homestead",
+    "password": "secret",
+    "database": "game",
+    "host": "192.168.10.10",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "lso",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "lso",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
