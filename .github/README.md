@@ -1,5 +1,5 @@
 # GTA V Roleplay Gamemode
-🎮 GTA:V roleplay multiplayer server. Based on Node, built with Sequelize. This repository contains source files of server gamemode.
+🎮 GTA:V roleplay multiplayer server. Based on Node, built with Sequelize. Repository contains source files of server gamemode.
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
