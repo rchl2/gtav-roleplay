@@ -11,5 +11,5 @@ log4js.configure({
 });
 
 // Get logger instance and export
-const loggerInstance = log4js.getLogger('[LSRPV]');
+const loggerInstance = log4js.getLogger('LSRPV');
 module.exports = (moduleName, msg, type) => loggerInstance[type](`[${moduleName}] ${msg}`);
