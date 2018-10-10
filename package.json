@@ -31,8 +31,7 @@
     "log4js": "^2.5.3",
     "moment": "^2.22.2",
     "mysql2": "^1.5.3",
-    "sequelize": "^4.37.10",
-    "sprintf-js": "^1.1.1"
+    "sequelize": "^4.37.10"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.52",
