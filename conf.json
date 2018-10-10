@@ -1,0 +1,9 @@
+{
+	"maxplayers" : 5,
+	"name" : "GTA:V Roleplay server", 
+	"gamemode" : "freeroam", 
+	"stream-distance" : 500.0,
+	"announce" : false,
+	"csharp" : "disabled",
+	"port": 22005
+}

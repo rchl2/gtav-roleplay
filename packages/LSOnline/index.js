@@ -1,6 +1,6 @@
 'use strict';
 
-// Globals
+// Global
 global.rp = {};
 
 // Libs
@@ -16,20 +16,16 @@ moment.locale('pl');
 const CommandCollection = require('./modules/structures/commandCollection');
 rp.commands = new CommandCollection();
 
+// Main server config
 rp.config = require('../../config/server.config.json');
 
 // Load server gamemode async
 (async () => {
   await require('./loaders/databaseLoader')();
-
   await require('./loaders/eventHandlersLoader')();
-
   await require('./loaders/commandsLoader')();
-
   await require('./loaders/clientProvidersLoader')();
-
   await require('./loaders/bootstrapLoader.js')();
 
-  // Loading complete
   logger('server', 'Loading complete... server is ready!', 'info');
 })();

@@ -5,7 +5,6 @@ const globals = require('./LSOnline/util/globals');
 const browser = require('./LSOnline/util/browser');
 const Overlay = require('./LSOnline/util/overlay');
 
-
 function preparePanel (url) {
   browser.prepareScreen(1000);
   camera.createCamera(3223, 5349, 14, 0, 0, 218, 20);
@@ -33,14 +32,16 @@ function destroyPanel () {
 
 mp.events.add({
   loginPanelAppeared: url => {
-     // preparePanel(url);
+    // preparePanel(url);
 
     // Only for test (debug) purposes. New login panel coming soon.
     mp.events.callRemote('authorizePlayer', 'Mati', 'XP#lSw0gbB1N');
   },
+
   loginButtonClicked: (login, password) => {
     mp.events.callRemote('authorizePlayer', login, password);
   },
+
   remindAccount: () => {
     Overlay.notify(
       'Nie posiadasz konta?',
@@ -49,6 +50,7 @@ mp.events.add({
       5000
     );
   },
+
   userAuthorized: async characters => {
     destroyPanel();
 
@@ -57,6 +59,7 @@ mp.events.add({
     // changePanel("package://LSOnline/browser/dist/characterSelect/index.html");
     // showCharacter(characters);
   },
+
   characterSelected: characterId => {
     destroyPanel();
     mp.events.callRemote('loginPlayer', characterId);

@@ -12,7 +12,7 @@ const checkIfVehicleModelExists = (model) => {
 
 exports.checkIfVehicleModelExists = checkIfVehicleModelExists;
 
-// Temporary cuz getting vehicleClass on client-side or using native not working.
+// Temporary because vehicleClass on client-side or using native not working
 const checkIfVehicleModelIsPolice = (model) => {
   if (model in vehicleData.policeVehicleHashes) {
     return true;

@@ -20,6 +20,10 @@ mp.events.add({
   },
 
   entityDataChange: (vehicle, key, value) => {
+    if (vehicle.type !== 'vehicle') {
+      return false;
+    }
+
     switch (key) {
       case 'description':
         vehicle.description = value;

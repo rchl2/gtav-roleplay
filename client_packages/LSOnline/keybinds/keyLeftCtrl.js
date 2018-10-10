@@ -4,7 +4,7 @@ const crouchingMovementClipSet = 'move_ped_crouched';
 const { loadClipSet } = require('./LSOnline/util/misc');
 const crouchingStrafeClipSet = 'move_ped_crouched_strafing';
 
-// load clip sets
+// Clip sets
 loadClipSet(crouchingMovementClipSet);
 loadClipSet(crouchingStrafeClipSet);
 

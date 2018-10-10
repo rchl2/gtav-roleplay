@@ -518,10 +518,10 @@ const bikesHashes = {
 exports.bikesHashes = bikesHashes;
 
 const carsData = [
-  {model: "f620", tankCapacity: 85, fuelType: 1, fuelRatio: 13.7},
-  {model: "cyclone", tankCapacity: 40, fuelType: 4, fuelRatio: 3},
-  {model: "windsor2", tankCapacity: 80, fuelType: 2, fuelRatio: 5},
-  {model: "frogger", tankCapacity: 3000, fuelType: 3, fuelRatio: 15}
+  {model: 'f620', tankCapacity: 85, fuelType: 1, fuelRatio: 13.7},
+  {model: 'cyclone', tankCapacity: 40, fuelType: 4, fuelRatio: 3},
+  {model: 'windsor2', tankCapacity: 80, fuelType: 2, fuelRatio: 5},
+  {model: 'frogger', tankCapacity: 3000, fuelType: 3, fuelRatio: 15}
 ];
 
 exports.carsData = carsData;

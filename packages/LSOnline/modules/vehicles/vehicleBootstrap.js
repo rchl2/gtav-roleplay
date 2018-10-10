@@ -5,7 +5,6 @@ const { loadAll } = require('./vehicleManager');
 
 const boot = async () => {
   loadAll();
-
   logger('server', `Successfully bootstrapped vehicles!`, 'info');
 };
 
