@@ -26,15 +26,13 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "chalk": "^2.4.1",
     "fs-nextra": "^0.3.7",
     "glob": "^7.1.2",
     "log4js": "^2.5.3",
     "moment": "^2.22.2",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.10",
-    "sprintf-js": "^1.1.1",
-    "winston": "^3.1.0"
+    "sprintf-js": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.52",
