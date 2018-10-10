@@ -1,7 +1,7 @@
 {
-  "name": "gamemode",
-  "version": "0.0.2",
-  "description": "Los Santos Online is a GTA V Roleplay server based on RAGE Multiplayer.",
+  "name": "gtav-roleplay",
+  "version": "0.1.0",
+  "description": "GTA V Roleplay server based on RAGE Multiplayer.",
   "contributors": [
     {
       "name": "Jakub Cała",
@@ -79,11 +79,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LosSantosOnline/gamemode"
+    "url": "git+https://github.com/rchl2/gtav-roleplay"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LosSantosOnline/gamemode/issues"
+    "url": "https://github.com/rchl2/gtav-roleplay/issues"
   },
-  "homepage": "https://github.com/LosSantosOnline/gamemode#readme"
+  "homepage": "https://github.com/rchl2/gtav-roleplay/#readme"
 }
