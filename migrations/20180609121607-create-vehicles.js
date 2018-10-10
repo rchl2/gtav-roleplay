@@ -32,6 +32,9 @@ module.exports = {
       owner: {
         type: Sequelize.INTEGER
       },
+      ownerType: {
+        type: Sequelize.INTEGER
+      },
       primaryColor: {
         type: Sequelize.STRING
       },
