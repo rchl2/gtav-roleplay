@@ -1,4 +1,4 @@
 // Game
-let altTabbed = false;
-let toggleChat = false;
-let disableChat = false;
+let altTabbed = false; // eslint-disable-line no-unused-vars
+let toggleChat = false; // eslint-disable-line no-unused-vars
+let disableChat = false; // eslint-disable-line no-unused-vars

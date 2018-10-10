@@ -25,7 +25,6 @@ const vehicleEvents = require('./LSOnline/vehicle/vehicleEvents');
 const keyZ = require('./LSOnline/keybinds/keyZ');
 const keyY = require('./LSOnline/keybinds/keyY');
 const keyF2 = require('./LSOnline/keybinds/keyF2');
-const keyAltTab = require('./LSOnline/keybinds/keyAltTab');
 const keyArrowUp = require('./LSOnline/keybinds/keyArrowUp');
 const keyLeftCtrl = require('./LSOnline/keybinds/keyLeftCtrl');
 const keyArrowDown = require('./LSOnline/keybinds/keyArrowDown');

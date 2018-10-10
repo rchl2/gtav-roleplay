@@ -1,7 +1,6 @@
 'use strict';
 
 const camera = require('./LSOnline/util/camera');
-const globals = require('./LSOnline/util/globals');
 const browser = require('./LSOnline/util/browser');
 const Overlay = require('./LSOnline/util/overlay');
 
