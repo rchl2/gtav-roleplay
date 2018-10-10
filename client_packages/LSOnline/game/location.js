@@ -40,8 +40,8 @@ mp.events.add(
   {
     render: () => {
       if (streetName && zoneName) {
-        draw3dText(streetName, [minimap.rightX + 0.01, minimap.bottomY - 0.065], 4, [255, 255, 255, 255], 0.55);
-        draw3dText(zoneName, [minimap.rightX + 0.01, minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.5);
+        draw3dText(streetName, [minimap.rightX + 0.02, minimap.bottomY - 0.065], 4, [255, 255, 255, 255], 0.55);
+        draw3dText(zoneName, [minimap.rightX + 0.02, minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.5);
 
         let vehicle = mp.players.local.vehicle;
         if (useSpeedo && vehicle) draw3dText(`${(vehicle.getSpeed() * (isMetric ? 3.6 : 2.236936)).toFixed(0)} ${(isMetric) ? 'KM/H' : 'MPH'}`, [minimap.rightX - 0.003, minimap.bottomY - 0.0485], 4, [255, 255, 255, 255], 0.45, true);
