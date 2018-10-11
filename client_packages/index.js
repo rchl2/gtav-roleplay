@@ -1,37 +1,37 @@
 // Chat
-const chatEvents = require('./LSOnline/chat/events');
+require('./LSOnline/chat/events');
 
 // Authorization
-const login = require('./LSOnline/login/login');
+require('./LSOnline/login/login');
 
-// CEF, etc.
-const camera = require('./LSOnline/util/camera');
-const browser = require('./LSOnline/util/browser');
-const Overlay = require('./LSOnline/util/overlay');
-const notification = require('./LSOnline/notification/notification');
+// CEF
+require('./LSOnline/api/browser');
+require('./LSOnline/browser/events/browserEvents');
+require('./LSOnline/util/overlay');
+require('./LSOnline/notification/notification');
 
 // Environment
-const envTime = require('./LSOnline/environment/time');
+require('./LSOnline/environment/time');
 
 // Player
-const playerEvents = require('./LSOnline/player/playerEvents');
-const playerRender = require('./LSOnline/player/playerRender');
+require('./LSOnline/player/playerEvents');
+require('./LSOnline/player/playerRender');
 
 // Vehicles
-const vehicleRender = require('./LSOnline/vehicle/vehicleRender');
-const vehicleEvents = require('./LSOnline/vehicle/vehicleEvents');
+require('./LSOnline/vehicle/vehicleRender');
+require('./LSOnline/vehicle/vehicleEvents');
 
 // Keybinds
-const keyZ = require('./LSOnline/keybinds/keyZ');
-const keyY = require('./LSOnline/keybinds/keyY');
-const keyF2 = require('./LSOnline/keybinds/keyF2');
-const keyArrowUp = require('./LSOnline/keybinds/keyArrowUp');
-const keyLeftCtrl = require('./LSOnline/keybinds/keyLeftCtrl');
-const keyArrowDown = require('./LSOnline/keybinds/keyArrowDown');
-const shiftButtonKey = require('./LSOnline/keybinds/shiftButtonKey');
+require('./LSOnline/keybinds/keyZ');
+require('./LSOnline/keybinds/keyY');
+require('./LSOnline/keybinds/keyF2');
+require('./LSOnline/keybinds/keyArrowUp');
+require('./LSOnline/keybinds/keyLeftCtrl');
+require('./LSOnline/keybinds/keyArrowDown');
+require('./LSOnline/keybinds/shiftButtonKey');
 
 // Customs
-const location = require('./LSOnline/game/location');
+require('./LSOnline/game/location');
 const { prepareClientView } = require('./LSOnline/util/misc');
 
 mp.events.add({

@@ -1,45 +1,25 @@
 'use strict';
 
-const camera = require('./LSOnline/util/camera');
-const browser = require('./LSOnline/util/browser');
+const browser = require('./LSOnline/api/browser');
 const Overlay = require('./LSOnline/util/overlay');
 
-function preparePanel (url) {
-  browser.prepareScreen(1000);
-  camera.createCamera(3223, 5349, 14, 0, 0, 218, 20);
-  browser.open(url);
-}
+/**
+ * Show characters inside browser.
+ */
+const showCharacters = characters => setTimeout(() => browser.inject(`showCharacters('${characters}', 3000)`), 4000);
 
-function changePanel (url) {
-  browser.close();
-  setTimeout(function () {
-    browser.prepareScreen();
-    browser.open(url);
-  }, 1000);
-}
-
-function showCharacter (characters) {
-  setTimeout(function () {
-    browser.inject(`showCharacters('${characters}',3000)`);
-  }, 4000);
-}
-
-function destroyPanel () {
-  camera.destroyCamera();
-  browser.close();
-}
-
+/**
+ * Events.
+ */
 mp.events.add({
   loginPanelAppeared: url => {
-    // preparePanel(url);
+    // browser.open(url);
 
     // Only for test (debug) purposes. New login panel coming soon.
     mp.events.callRemote('authorizePlayer', 'Mati', 'XP#lSw0gbB1N');
   },
 
-  loginButtonClicked: (login, password) => {
-    mp.events.callRemote('authorizePlayer', login, password);
-  },
+  loginButtonClicked: (login, password) => mp.events.callRemote('authorizePlayer', login, password),
 
   remindAccount: () => {
     Overlay.notify(
@@ -50,17 +30,18 @@ mp.events.add({
     );
   },
 
-  userAuthorized: async characters => {
-    destroyPanel();
+  userAuthorized: characters => {
+    browser.close();
 
     // Only for test (debug) purposes. New login panel coming soon.
     mp.events.callRemote('loginPlayer', 1);
-    // changePanel("package://LSOnline/browser/dist/characterSelect/index.html");
-    // showCharacter(characters);
+    // browser.changePage('package://LSOnline/browser/dist/characterSelect/index.html');
+
+    // showCharacters(characters);
   },
 
   characterSelected: characterId => {
-    destroyPanel();
+    browser.close();
     mp.events.callRemote('loginPlayer', characterId);
   }
 });
