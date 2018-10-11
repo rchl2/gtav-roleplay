@@ -24,6 +24,7 @@ require('./LSOnline/vehicle/vehicleEvents');
 // Keybinds
 require('./LSOnline/keybinds/keyZ');
 require('./LSOnline/keybinds/keyY');
+require('./LSOnline/keybinds/keyE');
 require('./LSOnline/keybinds/keyF2');
 require('./LSOnline/keybinds/keyArrowUp');
 require('./LSOnline/keybinds/keyLeftCtrl');

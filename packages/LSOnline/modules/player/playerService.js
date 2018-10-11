@@ -1,6 +1,7 @@
 'use strict';
 
 const brutallyWoundedTime = 20000;
+const { clearDoorInfo } = require('../doors/doorService');
 const { getDeathReason } = require('../player/playerData');
 
 const setBrutallyWounded = (player, reason, killer) => {
@@ -70,6 +71,7 @@ exports.clearDescription = clearDescription;
 
 const prepareBeforeQuit = (player, exitType) => {
   clearBrutallyWoundedTimers(player);
+  clearDoorInfo(player);
 
   // If this was timeout from player and he was in vehicle, save last position of this vehicle to put him back when he goes back.
   if (exitType === 'timeout') {
