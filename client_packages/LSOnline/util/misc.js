@@ -4,21 +4,17 @@ const natives = {
   SET_TEXT_OUTLINE: '0x2513dfb0fb8400fe'
 };
 
+/**
+ * Prepare client view.
+ */
 const prepareClientView = () => {
-  // Disable vehicle rewards
-  mp.game.player.disableVehicleRewards();
+  mp.game.player.disableVehicleRewards(); // Disable vehicle rewards
+  mp.nametags.enabled = false; // Disable nametags
 
-  // Disable nametags
-  mp.nametags.enabled = false;
+  hideHudElements([1, 3]); // Hide HUD elements
+  mp.discord.update('LSRP:V', 'In-Game'); // Update discord status
 
-  // Hide HUD elements
-  hideHudElements([1, 3]);
-
-  // Update discord status
-  mp.discord.update('LSRP:V', 'In-Game');
-
-  // Initialize textDraws object
-  mp.players.local.textDraws = {};
+  mp.players.local.textDraws = {}; // Initialize textDraws object
 };
 
 exports.prepareClientView = prepareClientView;

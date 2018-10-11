@@ -23,6 +23,10 @@ module.exports = {
       ownerType: {
         type: Sequelize.INTEGER
       },
+      ipl: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
       position: {
         type: Sequelize.TEXT,
         allowNull: false

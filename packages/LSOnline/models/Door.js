@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.INTEGER,
     owner: DataTypes.INTEGER,
     ownerType: DataTypes.INTEGER,
+    ipl: DataTypes.TEXT,
     position: DataTypes.TEXT,
     insidePosition: DataTypes.TEXT,
     heading: DataTypes.FLOAT,
