@@ -5,6 +5,13 @@ const helpers = require('../utils/helpers');
 const database = require('../database/database');
 const vehicleData = require('../vehicles/vehicleData');
 
+/**
+ * Create vehicle inside database with given name.
+ * Proceed to spawn vehicle on world.
+ *
+ * @param {object} player Player as object.
+ * @param {string} model Model of the vehicle.
+ */
 async function create (player, model) {
   const primaryColor = [helpers.randomInt(0, 255), helpers.randomInt(0, 255), helpers.randomInt(0, 255)];
   const secondaryColor = [helpers.randomInt(0, 255), helpers.randomInt(0, 255), helpers.randomInt(0, 255)];
@@ -29,6 +36,12 @@ async function create (player, model) {
 
 exports.create = create;
 
+/**
+ * Configure newly spawned on world vehicle.
+ *
+ * @param {object} createdVehicle Vehicle ingame.
+ * @param {object} vehicleData Vehicle as object from database.
+ */
 function configureCreated (createdVehicle, vehicleData) {
   try {
     let vehiclePlate = `LS${vehicleData.id}`;
@@ -53,6 +66,11 @@ function configureCreated (createdVehicle, vehicleData) {
   }
 }
 
+/**
+ * Load vehicle from database and proceed to spawn on world.
+ *
+ * @param {integer} vehicleId Vehicle ID.
+ */
 async function load (vehicleId) {
   database.vehicle.findById(vehicleId).then(vehicle => {
     spawn(vehicle);
@@ -61,6 +79,9 @@ async function load (vehicleId) {
 
 exports.load = load;
 
+/**
+ * Load all vehicles and spawn them on world.
+ */
 const loadAll = async () => {
   database.vehicle.findAll().then(vehicles => {
     for (let i = 0; i < vehicles.length; i++) {
@@ -71,7 +92,12 @@ const loadAll = async () => {
 
 exports.loadAll = loadAll;
 
-async function spawn (vehicle) {
+/**
+ * Spawn vehicle on world.
+ *
+ * @param {object} vehicle Vehicle as object from database.
+ */
+function spawn (vehicle) {
   if (vehicle.position === null) {
     return logger('vehicle', `Vehicle position is null (vehicleId: ${vehicle.id})!`, 'error');
   }
@@ -88,6 +114,9 @@ async function spawn (vehicle) {
   configureCreated(createdVehicle, vehicle);
 }
 
+/**
+ * Respawn all vehicles on world.
+ */
 const respawnAll = async () => {
   mp.vehicles.forEach((vehicle) => vehicle.destroy());
   await loadAll();
@@ -95,12 +124,23 @@ const respawnAll = async () => {
 
 exports.respawnAll = respawnAll;
 
+/**
+ * Unspawn vehicle from world.
+ *
+ * @param {object} vehicle Vehicle as entity.
+ */
 async function unspawn (vehicle) {
   if (vehicle) vehicle.destroy();
 }
 
 exports.unspawn = unspawn;
 
+/**
+ * Refuel vehicle.
+ *
+ * @param {integer} vehicleId Vehicle ID.
+ * @param {integer} fuel Amount of fuel.
+ */
 async function refuel (vehicleId, fuel) {
   database.vehicle.findById(vehicleId).then(vehicle => {
     vehicle
@@ -116,6 +156,12 @@ async function refuel (vehicleId, fuel) {
 
 exports.refuel = refuel;
 
+/**
+ * Update vehicle name.
+ *
+ * @param {integer} vehicleId Vehicle ID.
+ * @param {string} name The new name of vehicle.
+ */
 async function updateName (vehicleId, name) {
   database.vehicle.findById(vehicleId).then(vehicle => {
     vehicle
@@ -131,6 +177,13 @@ async function updateName (vehicleId, name) {
 
 exports.updateName = updateName;
 
+/**
+ * Assign vehicle to owner.
+ *
+ * @param {integer} vehicleId Vehicle ID.
+ * @param {integer} ownerType Owner type (1 = player, 2 = group).
+ * @param {integer} owner Owner ID.
+ */
 async function assign (vehicleId, ownerType, owner) {
   if (ownerType == 1) {
     database.vehicle.findById(vehicleId).then(vehicle => {
@@ -148,6 +201,11 @@ async function assign (vehicleId, ownerType, owner) {
 
 exports.assign = assign;
 
+/**
+ * Remove vehicle from database.
+ *
+ * @param {integer} vehicleId Vehicle ID.
+ */
 async function remove (vehicleId) {
   database.vehicle.findById(vehicleId).then(vehicle => {
     vehicle
