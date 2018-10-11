@@ -62,8 +62,8 @@ function configureCreated (createdDoor, doorData) {
     const doorInsidePosition = JSON.parse(doorData.insidePosition);
 
     // Configure marker
-    createdDoor.scale = 0.8;
-    createdDoor.setColor(51, 204, 255, 155);
+    createdDoor.scale = rp.config.doors.markerScale;
+    createdDoor.setColor(rp.config.colors.doors.markerColor);
 
     // Assign data to marker
     createdDoor.informations = {

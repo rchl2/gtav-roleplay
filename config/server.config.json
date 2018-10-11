@@ -14,6 +14,13 @@
         "pm": "#c6cd00",
         "pmReceiver": "#dce166",
         "whisper": "#7d7d7d",
-        "ooc": "#dddddd"
+        "ooc": "#dddddd",
+        "doors": {
+            "markerColor": "51, 204, 255, 155"
+        }
+    },
+
+    "doors": {
+        "markerScale": 0.8
     }
 }
