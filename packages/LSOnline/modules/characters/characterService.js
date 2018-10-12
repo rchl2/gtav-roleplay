@@ -1,9 +1,7 @@
 'use strict';
 
 const randomSpawns = [
-  new mp.Vector3(1839.6, 3672.93, 34.28),
-  new mp.Vector3(-247.76, 6331.23, 32.43),
-  new mp.Vector3(-449.67, -340.83, 34.50)
+  new mp.Vector3(-247.76, 6331.23, 32.43)
 ];
 
 const { getVehicleById } = require('../vehicles/vehicleService');

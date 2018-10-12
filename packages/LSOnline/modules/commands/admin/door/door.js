@@ -13,7 +13,6 @@ class Door extends Command {
 
   async run (player, command, args) {
     const [doorName] = args;
-
     await create(player, doorName);
   }
 }

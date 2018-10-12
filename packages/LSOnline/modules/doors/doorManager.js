@@ -63,13 +63,14 @@ function configureCreated (createdDoor, doorData) {
 
     // Configure marker
     createdDoor.scale = rp.config.doors.markerScale;
-    createdDoor.setColor(rp.config.colors.doors.markerColor);
+    createdDoor.setColor(51, 204, 255, 155);
 
     // Assign data to marker
     createdDoor.informations = {
       id: doorData.id,
       gameId: createdDoor.id,
       name: doorData.name,
+      ipl: null,
       position: doorPosition,
       insidePosition: doorInsidePosition,
       dimension: doorData.dimension,
@@ -79,6 +80,8 @@ function configureCreated (createdDoor, doorData) {
     // Create colshapes for door
     createEnterColshape(createdDoor, doorData);
     createExitColshape(createdDoor, doorData);
+
+    console.log(createdDoor.id);
   } catch (e) {
     logger('door', `Error occurred when configuring door "${doorData.name}" (ID: ${doorData.id}). (Message: ${e})`, 'error');
   }
@@ -103,6 +106,7 @@ function createEnterColshape (createdDoor, doorData) {
     doorGameId: createdDoor.id,
     doorId: doorData.id,
     doorName: doorData.name,
+    doorIpl: doorData.ipl,
     doorDimension: doorData.dimension,
     doorInsideDimension: doorData.insideDimension,
     doorPosition: doorPosition,
@@ -129,6 +133,7 @@ function createExitColshape (createdDoor, doorData) {
     doorGameId: createdDoor.id,
     doorId: doorData.id,
     doorName: doorData.name,
+    doorIpl: doorData.ipl,
     doorDimension: doorData.dimension,
     doorInsideDimension: doorData.insideDimension,
     doorPosition: doorPosition,
@@ -143,8 +148,53 @@ const loadAll = async () => {
   database.door.findAll().then(doors => {
     for (let i = 0; i < doors.length; i++) {
       spawn(doors[i]);
+
+      if (doors[i].ipl) {
+        mp.world.requestIpl(doors[i].ipl);
+      }
     }
   });
 };
 
 exports.loadAll = loadAll;
+
+/**
+ * Update door interior.
+ *
+ * @param {integer} doorId Door ID in database.
+ * @param {string} interior Interior name (look at IPL list).
+ */
+async function updateInterior (doorId, interior) {
+  database.door.findById(doorId).then(door => {
+    door
+      .update({ipl: interior})
+      .then((door) => {
+        logger('door', `Changed door "${door.name}" (ID: ${door.id}) interior to "${door.ipl}".`, 'info');
+      })
+      .catch((err) => {
+        logger('door', `Error occurred when changing door "${door.name}" interior (ID: ${vehicle.id}). (Message: ${err})`, 'error');
+      });
+  });
+}
+
+exports.updateInterior = updateInterior;
+
+/**
+ * Get closest door for player.
+ *
+ * @param {object} player Player as object.
+ * @param {integer} range Range.
+ */
+function getClosestDoorForPlayer (player, range) {
+  let foundDoor = null;
+
+  mp.colshapes.forEachInRange(player.position, range, player.dimension,
+    (door) => {
+      foundDoor = door;
+    }
+  );
+
+  return foundDoor;
+}
+
+exports.getClosestDoorForPlayer = getClosestDoorForPlayer;

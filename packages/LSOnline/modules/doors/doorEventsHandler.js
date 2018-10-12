@@ -5,31 +5,32 @@ const { enterDoor, leaveDoor } = require('./doorService');
 
 mp.events.add({
   playerEnterColshape: (player, shape) => {
-    let door = shape;
+    if (shape.informations.doorName) {
+      let door = shape;
 
-    // Assign data to player
-    player.door = shape;
-    player.inFrontOfDoors = true;
+      // Assign data to player
+      player.lastEnteringDoor = door;
+      player.inFrontOfDoors = true;
 
-    // Check type of door
-    door.informations.type === 'enter'
-      ? pushHelpMessage(player, `Aby wejść do drzwi "${shape.informations.doorName}" naciśnij ~b~E~w~.`)
-      : pushHelpMessage(player, `Aby wyjść z drzwi "${shape.informations.doorName}" naciśnij ~b~E~w~.`);
+      // Check type of door
+      door.informations.type === 'enter'
+        ? pushHelpMessage(player, `Aby wejść do drzwi "${shape.informations.doorName}" naciśnij ~b~E~w~.`)
+        : pushHelpMessage(player, `Aby wyjść z drzwi "${shape.informations.doorName}" naciśnij ~b~E~w~.`);
+    }
   },
 
   playerExitColshape: (player, shape) => {
-    player.door = null;
-    player.inFrontOfDoors = false;
+    if (shape.informations.doorName) {
+      player.lastEnteringDoor = null;
+      player.inFrontOfDoors = false;
+    }
   },
 
   keyE: player => {
-    if (player.door) {
-      if (player.inFrontOfDoors) {
-        let door = player.door;
-
-        door.informations.type === 'enter'
-          ? enterDoor(player)
-          : leaveDoor(player);
+    if (player.inFrontOfDoors) {
+      if (player.lastEnteringDoor) {
+        let door = player.lastEnteringDoor;
+        door.informations.type === 'enter' ? enterDoor(player, door) : leaveDoor(player, door);
       }
     }
   }
