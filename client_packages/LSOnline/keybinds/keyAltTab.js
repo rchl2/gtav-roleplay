@@ -25,7 +25,4 @@ const setGameAltTabbed = (value) => {
   globals.altTabbed = value;
 
   toggleChat(!value);
-  value
-    ? mp.game.graphics.transitionToBlurred(1000)
-    : mp.game.graphics.transitionFromBlurred(800);
 };

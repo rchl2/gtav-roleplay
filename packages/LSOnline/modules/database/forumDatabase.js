@@ -33,5 +33,8 @@ connection
 db.connection = connection;
 db.Sequelize = Sequelize;
 
+// Account model
+db.account = require('../../models/Account')(connection, Sequelize);
+
 // Export module
 module.exports = db;

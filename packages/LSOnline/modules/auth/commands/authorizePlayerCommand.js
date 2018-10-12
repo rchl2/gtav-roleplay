@@ -8,10 +8,10 @@ const { findCharactersForAccount } = require('../../characters/characterManager'
 exports.execute = async (player, login, password) => {
   await service.ipbAuth(login, password).then(() => {
     loadAccountData(player, login).then(async () => {
-      const chars = await findCharactersForAccount(player.account.id);
+      const chars = await findCharactersForAccount(player.account.member_id);
       player.call('userAuthorized', [JSON.stringify(chars)]);
     });
   }, (err) => {
-    logger('authorization', err, 'error');
+    logger('auth', err, 'error');
   });
 };

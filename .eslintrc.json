@@ -19,7 +19,6 @@
   "rules": {
     "semi": ["error", "always"],
     "no-console": "off",
-    "no-unused-vars": "off",
     "no-unneeded-ternary": "off",
     "eqeqeq": "off"
   }

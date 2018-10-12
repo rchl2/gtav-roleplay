@@ -7,8 +7,7 @@ module.exports = async () => {
     const vehicleBootstrap = require('../modules/vehicles/vehicleBootstrap');
 
     vehicleBootstrap.boot();
-    logger('server', `Game successfully bootstrapped!`, 'info');
   } catch (err) {
-    logger('server', `Error while bottstraping game (Error: ${err.message} / ${err.stack})!`, 'error');
+    logger('server', `Error while bottstraping (Error: ${err.message} / ${err.stack})!`, 'error');
   }
 };

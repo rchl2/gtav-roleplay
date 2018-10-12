@@ -9,7 +9,7 @@ exports.loadAndSpawnCharacter = async (player, characterId) => {
   });
 
   mp.events.call('spawnCharacter', player, character);
-  logger('authorization', `Loaded and spawned character ${player.character.info.name} (ID: ${player.character.info.id} / Player: ${player.name} / SC: ${player.socialClub} / IP: ${player.ip})!`, 'info');
+  logger('auth', `Loaded and spawned character ${player.character.info.name} (ID: ${player.character.info.id} / Player: ${player.name} / SC: ${player.socialClub} / IP: ${player.ip})!`, 'info');
 };
 
 exports.findCharactersForAccount = async (accountId) => {
