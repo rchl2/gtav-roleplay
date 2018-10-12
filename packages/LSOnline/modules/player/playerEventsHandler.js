@@ -1,4 +1,5 @@
 'use strict';
+
 const { validateText } = require('../utils/helpers');
 const { setBrutallyWounded, prepareBeforeQuit, createQuitLabel } = require('../player/playerService');
 

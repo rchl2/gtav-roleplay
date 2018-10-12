@@ -16,6 +16,7 @@ async function create (player, name) {
       name: name,
       owner: player.character.info.id,
       ownerType: 1,
+      enterPrice: 0,
       position: JSON.stringify(player.position),
       insidePosition: JSON.stringify(player.position),
       heading: player.heading,
@@ -71,6 +72,7 @@ function configureCreated (createdDoor, doorData) {
       gameId: createdDoor.id,
       name: doorData.name,
       ipl: null,
+      enterPrice: 0,
       position: doorPosition,
       insidePosition: doorInsidePosition,
       dimension: doorData.dimension,
@@ -80,8 +82,6 @@ function configureCreated (createdDoor, doorData) {
     // Create colshapes for door
     createEnterColshape(createdDoor, doorData);
     createExitColshape(createdDoor, doorData);
-
-    console.log(createdDoor.id);
   } catch (e) {
     logger('door', `Error occurred when configuring door "${doorData.name}" (ID: ${doorData.id}). (Message: ${e})`, 'error');
   }
@@ -107,6 +107,7 @@ function createEnterColshape (createdDoor, doorData) {
     doorId: doorData.id,
     doorName: doorData.name,
     doorIpl: doorData.ipl,
+    doorEnterPrice: doorData.enterPrice,
     doorDimension: doorData.dimension,
     doorInsideDimension: doorData.insideDimension,
     doorPosition: doorPosition,
@@ -134,6 +135,7 @@ function createExitColshape (createdDoor, doorData) {
     doorId: doorData.id,
     doorName: doorData.name,
     doorIpl: doorData.ipl,
+    doorEnterPrice: doorData.enterPrice,
     doorDimension: doorData.dimension,
     doorInsideDimension: doorData.insideDimension,
     doorPosition: doorPosition,
@@ -172,12 +174,33 @@ async function updateInterior (doorId, interior) {
         logger('door', `Changed door "${door.name}" (ID: ${door.id}) interior to "${door.ipl}".`, 'info');
       })
       .catch((err) => {
-        logger('door', `Error occurred when changing door "${door.name}" interior (ID: ${vehicle.id}). (Message: ${err})`, 'error');
+        logger('door', `Error occurred when changing door "${door.name}" interior (ID: ${door.id}). (Message: ${err})`, 'error');
       });
   });
 }
 
 exports.updateInterior = updateInterior;
+
+/**
+ * Update door enter price.
+ *
+ * @param {integer} doorId Door ID in database.
+ * @param {integer} enterPrice Enter price.
+ */
+async function updateEnterPrice (doorId, enterPrice) {
+  database.door.findById(doorId).then(door => {
+    door
+      .update({enterPrice: enterPrice})
+      .then((door) => {
+        logger('door', `Changed door "${door.name}" (ID: ${door.id}) enter price to $"${door.enterPrice}".`, 'info');
+      })
+      .catch((err) => {
+        logger('door', `Error occurred when changing door "${door.name}" enter price (ID: ${door.id}). (Message: ${err})`, 'error');
+      });
+  });
+}
+
+exports.updateEnterPrice = updateEnterPrice;
 
 /**
  * Get closest door for player.
