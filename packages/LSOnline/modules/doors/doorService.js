@@ -1,7 +1,6 @@
 'use strict';
 
 const playerService = require('../player/playerService');
-const { checkCharacterCash } = require('../characters/characterService');
 
 /**
  * Enter door as player.
@@ -12,8 +11,12 @@ const { checkCharacterCash } = require('../characters/characterService');
 const enterDoor = (player, door) => {
   if (door) {
     if (door.informations.doorInsidePosition && door.informations.doorInsideDimension && door.informations.type === 'enter') {
-      if (!checkCharacterCash(player, door.informations.doorEnterPrice)) {
-        return playerService.pushHelpMessage(player, `Aby wejść do tego budynku musisz posiadać $${door.informations.enterPrice}!`);
+      if (door.informations.doorEnterPrice > 0) {
+        if (!playerService.checkPlayerCash(player, door.informations.doorEnterPrice)) {
+          return playerService.pushHelpMessage(player, `Aby wejść do tego budynku musisz posiadać $${door.informations.doorEnterPrice}!`);
+        }
+
+        playerService.removeCashFromPlayer(player, door.informations.doorEnterPrice);
       }
 
       player.door = door;

@@ -71,8 +71,8 @@ function configureCreated (createdDoor, doorData) {
       id: doorData.id,
       gameId: createdDoor.id,
       name: doorData.name,
-      ipl: null,
-      enterPrice: 0,
+      ipl: doorData.ipl,
+      enterPrice: doorData.enterPrice,
       position: doorPosition,
       insidePosition: doorInsidePosition,
       dimension: doorData.dimension,
@@ -80,8 +80,8 @@ function configureCreated (createdDoor, doorData) {
     };
 
     // Create colshapes for door
-    createEnterColshape(createdDoor, doorData);
-    createExitColshape(createdDoor, doorData);
+    createdDoor.enterColshape = createEnterColshape(createdDoor, doorData);
+    createdDoor.exitColshape = createExitColshape(createdDoor, doorData);
   } catch (e) {
     logger('door', `Error occurred when configuring door "${doorData.name}" (ID: ${doorData.id}). (Message: ${e})`, 'error');
   }
@@ -113,6 +113,8 @@ function createEnterColshape (createdDoor, doorData) {
     doorPosition: doorPosition,
     doorInsidePosition: doorInsidePosition
   };
+
+  return enterColshape;
 }
 
 /**
@@ -141,6 +143,8 @@ function createExitColshape (createdDoor, doorData) {
     doorPosition: doorPosition,
     doorInsidePosition: doorInsidePosition
   };
+
+  return exitColshape;
 }
 
 /**

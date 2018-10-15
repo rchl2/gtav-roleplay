@@ -20,10 +20,11 @@ exports.findCharactersForAccount = async (accountId) => {
   });
 };
 
-exports.saveCharacterBeforeQuit = async (characterId, dimension, position, lastVehicle = false, lastLogin, exitType) => {
+exports.saveCharacterBeforeQuit = async (characterId, money, dimension, position, lastVehicle = false, lastLogin, exitType) => {
   database.character.findById(characterId).then(character => {
     character
       .update({
+        money: money,
         position: JSON.stringify(position),
         dimension: dimension,
         lastLogin: lastLogin,

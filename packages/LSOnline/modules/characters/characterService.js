@@ -44,15 +44,3 @@ const putCharacterIntoLastVehicle = (player, character) => {
     }
   }
 };
-
-/**
- * Check character cash.
- *
- * @param {object} player Player as object.
- * @param {integer} cash Amount of cash to check.
- */
-const checkCharacterCash = (player, cash) => {
-  return (player.money < cash) ? false : true;
-};
-
-exports.checkCharacterCash = checkCharacterCash;

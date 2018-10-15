@@ -1,5 +1,3 @@
-'use strict';
-
 const brutallyWoundedTime = 20000;
 const { clearDoorInfo } = require('../doors/doorService');
 const { getDeathReason } = require('../player/playerData');
@@ -125,3 +123,27 @@ const stopPlayingAnimation = player => {
 };
 
 exports.stopPlayingAnimation = stopPlayingAnimation;
+
+/**
+ * Check player cash.
+ *
+ * @param {object} player Player as object.
+ * @param {integer} cash Amount of cash to check.
+ */
+const checkPlayerCash = (player, cash) => {
+  return (player.data.money < cash) ? false : true;
+};
+
+exports.checkPlayerCash = checkPlayerCash;
+
+/**
+ * Remove cash from player.
+ *
+ * @param {object} player Player as object.
+ * @param {integer} cash Amount of cash to take from player.
+ */
+const removeCashFromPlayer = (player, cash) => {
+  player.data.money -= cash;
+};
+
+exports.removeCashFromPlayer = removeCashFromPlayer;

@@ -17,6 +17,7 @@ class Price extends Command {
     if (door) {
       await updateEnterPrice(door.informations.id, price);
       door.informations.enterPrice = price;
+      door.enterColshape.informations.doorEnterPrice = price;
 
       player.call('actionDone', [
         'Komendy administracyjne',

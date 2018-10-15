@@ -8,8 +8,8 @@ class Character {
 
   async saveBeforeQuit (player, lastVehicle = false, exitType) {
     lastVehicle
-      ? await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, lastVehicle, this.info.lastLogin, exitType)
-      : await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, undefined, this.info.lastLogin, exitType);
+      ? await saveCharacterBeforeQuit(this.info.id, player.data.money, player.dimension, player.position, lastVehicle, this.info.lastLogin, exitType)
+      : await saveCharacterBeforeQuit(this.info.id, player.data.money, player.dimension, player.position, undefined, this.info.lastLogin, exitType);
   }
 
   updateLastLoginDate () {
