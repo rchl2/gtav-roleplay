@@ -2,9 +2,9 @@
 import Vue from 'vue';
 import App from './App.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPowerOff, faChevronLeft, faChevronRight, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faChevronLeft, faChevronRight, faUsers, faCar, faShoppingBag, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faPowerOff, faChevronLeft, faChevronRight, faUsers);
+library.add(faPowerOff, faChevronLeft, faChevronRight, faUsers, faCar, faShoppingBag, faTrophy);
 
 const vm = new Vue({
   el: '#app',
