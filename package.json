@@ -19,7 +19,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "hot": "webpack-dev-server --mode=development",
+    "hot": "webpack-dev-server --mode=development --config ./config/webpack.config.js",
     "prod": "webpack --mode=production --config ./config/webpack.config.js",
     "dev": "webpack --mode=development --config ./config/webpack.config.js",
     "start": "nodemon --watch packages --watch client_packages --exec \"./server.exe\""
