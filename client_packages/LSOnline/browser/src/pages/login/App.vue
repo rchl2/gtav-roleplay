@@ -14,7 +14,7 @@
       </div>
     </div>
     <transition name="fade">
-      <alert-box :messages="alerts"></alert-box>
+      <alert-box :messages.sync="alerts"></alert-box>
     </transition>
   </div>
 </template>
@@ -39,7 +39,7 @@ export default {
         count: 0,
         message: ''
       },
-      allowedAfterLogin: ['settings', 'chars'],
+      allowedAfterLogin: ['chars'],
       characters: []
     };
   },
@@ -69,9 +69,14 @@ export default {
         this.characters = response.characters
         this.active = 'chars'
         this.disabled = this.disabled.filter((x) => !this.allowedAfterLogin.includes(x))
+        this.pushInformation('Aby wybrać postać skorzystaj ze strzałek na klawiaturze!')
         return true;
       }
       return false;
+    },
+    pushInformation(message) {
+      this.alerts.type = 'info';
+      this.alerts.message = message;
     }
   },
   components: {

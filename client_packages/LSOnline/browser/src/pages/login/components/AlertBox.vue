@@ -22,7 +22,18 @@ export default {
       type: Object,
       default: () => {}
     }
-  }
+  },
+   watch: {
+    messages: {
+      immediate: true,
+      deep: true,
+      handler(newValue, oldValue) {
+        setTimeout(() => {
+          this.$emit('update:messages', {})
+        }, 8000);
+      }
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
