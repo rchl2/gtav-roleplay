@@ -4,9 +4,9 @@ const browser = require('./LSOnline/api/browser');
 const Overlay = require('./LSOnline/util/overlay');
 
 /**
- * Show characters inside browser.
+ * Pass response to the browser.
  */
-const showCharacters = characters => setTimeout(() => browser.inject(`showCharacters('${characters}', 3000)`), 4000);
+const handleResponse = response => setTimeout(() => browser.inject(`handleResponse(${response})`), 1000);
 
 /**
  * Events.
@@ -29,15 +29,10 @@ mp.events.add({
       5000
     );
   },
-
-  userAuthorized: characters => {
-    browser.close();
-
+  handleAuthResponse: async response => {
     // Only for test (debug) purposes. New login panel coming soon.
     mp.events.callRemote('loginPlayer', 1);
-    // browser.changePage('package://LSOnline/browser/dist/characterSelect/index.html');
-
-    // showCharacters(characters);
+    // handleResponse(response);
   },
 
   characterSelected: characterId => {

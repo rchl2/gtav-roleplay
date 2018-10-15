@@ -1,2 +1,66 @@
-@import "./_main.scss";
-@import "./_utils.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto:200,400,700');
+
+@tailwind preflight;
+
+@tailwind components;
+
+@tailwind utilities;
+
+$background: rgba(#fff, 0.3);
+.border-sidebar {
+ border-right: 2px $background solid;
+}
+.border-table {
+    border-color: $background;
+}
+body {
+    transition: background-image 1s ease;
+}
+.icon-color {
+    color: $background;
+    transition: .5s linear;
+    display: block;
+    width: fit-content;
+    &:hover {
+        color: rgba(#fff, 0.8) !important;
+        cursor: pointer;
+    }
+}
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    text-transform: uppercase;
+  }
+  
+.navbar {
+    box-shadow: inset 0px -2px 0 $background;
+    li {
+        a, & {
+            transition: .5s linear; 
+        }
+        &.active, &:not(.cursor-not-allowed):hover {
+            a {
+                color: #fff!important;
+            }
+            box-shadow: inset 0px -2px 0 #fff;
+        }
+        &:not(.cursor-not-allowed) {
+           cursor: pointer; 
+        }
+    }
+}
+.bg-white-trans {
+    background-color: rgba(#fff, 0.1);
+}
+svg, a {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+}
+.vertical-divider {
+    height: 175px;
+    width: 1px;
+    background: linear-gradient(to bottom, white 0%, rgba(0, 0, 0, 0) 0%), linear-gradient(to top, rgba(172, 0, 0, 0) 0%, white 10%, white 90%, rgba(165, 158, 25, 0));
+}
