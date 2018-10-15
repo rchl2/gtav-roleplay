@@ -47,22 +47,22 @@
       <div class="flex flex-row justify-center flex-wrap content-center flex-1 pb-8">
         <div class="box flex-none items-center justify-between flex flex-col h-auto w-2/5">
           <span class="font-sans text-white">Grupy</span>
-          <font-awesome-icon class="text-white" icon="users" size="5x"></font-awesome-icon>
+          <font-awesome-icon class="text-white m-2" icon="users" size="5x"></font-awesome-icon>
           <span class="text-white">1</span>
         </div>
         <div class="box flex-none items-center justify-between flex flex-col h-auto w-2/5">
-          <span class="font-sans text-white">Grupy</span>
-          <font-awesome-icon class="text-white" icon="users" size="5x"></font-awesome-icon>
+          <span class="font-sans text-white">Pojazdy</span>
+          <font-awesome-icon class="text-white m-2" icon="car" size="5x"></font-awesome-icon>
           <span class="text-white">1</span>
         </div>
         <div class="box flex-none items-center justify-between flex flex-col h-auto w-2/5">
-          <span class="font-sans text-white">Grupy</span>
-          <font-awesome-icon class="text-white" icon="users" size="5x"></font-awesome-icon>
+          <span class="font-sans text-white">Przedmioty</span>
+          <font-awesome-icon class="text-white m-2" icon="shopping-bag" size="5x"></font-awesome-icon>
           <span class="text-white">1</span>
         </div>
         <div class="box flex-none items-center justify-between flex flex-col h-auto w-2/5">
-          <span class="font-sans text-white">Grupy</span>
-          <font-awesome-icon class="text-white" icon="users" size="5x"></font-awesome-icon>
+          <span class="font-sans text-white">Osiągnięcia</span>
+          <font-awesome-icon class="text-white m-2" icon="trophy" size="5x"></font-awesome-icon>
           <span class="text-white">1</span>
         </div>
       </div>
@@ -118,15 +118,25 @@ export default {
       let minutes = moment.duration(miliseconds-hours*3600000).asMinutes().toFixed(0);
 
       return `${hours}h ${minutes}m`
+    },
+    selectedCharacter(id) {
+      mp.trigger('characterSelected', id)
     }
   },
   components: {
     FontAwesomeIcon
+  },
+  mounted() {
+    window.addEventListener('keydown', (e) => {
+      if(e.keyCode === 37) return this.previous();
+      if(e.keyCode === 39) return this.next();
+      if(e.keyCode === 13) return this.selectedCharacter(this.selection.id);
+    })
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 .box {
   background: rgba(0, 0, 0, .3);
   margin: 1rem;
