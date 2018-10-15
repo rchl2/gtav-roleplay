@@ -4,11 +4,11 @@ const camera = require('./LSOnline/util/camera');
 const globals = require('./LSOnline/util/globals');
 const browser = require('./LSOnline/util/browser');
 const Overlay = require('./LSOnline/util/overlay');
-
+const peds = [];
 
 function preparePanel (url) {
   browser.prepareScreen(1000);
-  camera.createCamera(3223, 5349, 14, 0, 0, 218, 20);
+  camera.createCamera(-1033.9517, -2731.807, 20.168, 0, 0, 150, 60);
   browser.open(url);
 }
 
@@ -20,10 +20,10 @@ function changePanel (url) {
   }, 1000);
 }
 
-function showCharacter (characters) {
+function handleResponse (characters) {
   setTimeout(function () {
-    browser.inject(`showCharacters('${characters}',3000)`);
-  }, 4000);
+    browser.inject(`handleResponse(${characters})`);
+  }, 1000);
 }
 
 function destroyPanel () {
@@ -33,7 +33,7 @@ function destroyPanel () {
 
 mp.events.add({
   loginPanelAppeared: url => {
-     // preparePanel(url);
+    // preparePanel(url);
 
     // Only for test (debug) purposes. New login panel coming soon.
     mp.events.callRemote('authorizePlayer', 'Mati', 'XP#lSw0gbB1N');
@@ -49,13 +49,10 @@ mp.events.add({
       5000
     );
   },
-  userAuthorized: async characters => {
-    destroyPanel();
-
+  handleAuthResponse: async response => {
     // Only for test (debug) purposes. New login panel coming soon.
     mp.events.callRemote('loginPlayer', 1);
-    // changePanel("package://LSOnline/browser/dist/characterSelect/index.html");
-    // showCharacter(characters);
+    // handleResponse(response);
   },
   characterSelected: characterId => {
     destroyPanel();
