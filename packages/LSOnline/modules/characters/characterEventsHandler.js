@@ -3,6 +3,7 @@ const { spawnCharacterOnPosition } = require('../characters/characterService');
 
 mp.events.add({
   spawnCharacter: (player, character) => {
+    if (player.account.member_id !== character.owner) player.kick('Postać nie należy do gracza.');
     player.character = new Character(character);
     player.character.updateLastLoginDate();
 
