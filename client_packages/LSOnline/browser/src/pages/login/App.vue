@@ -54,7 +54,6 @@ export default {
   },
   methods: {
     handleResponse(response = {}) {
-      console.log(response)
       if(response.errors) {
         this.alerts = {
           type: 'error',
