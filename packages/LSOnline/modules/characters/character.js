@@ -6,8 +6,9 @@ class Character {
     this.info = data;
   }
 
-  async saveBeforeQuit (player, lastVehicle = undefined, exitType) {
-    await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, lastVehicle, this.info.lastLogin, exitType);
+  async saveBeforeQuit (player, lastVehicle = null, exitType) {
+    const played = this.getOnlineTime();
+    await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, lastVehicle, this.info.lastLogin, exitType, player.health, played, player.money, player.bank);
   }
 
   updateLastLoginDate () {
@@ -17,6 +18,13 @@ class Character {
   async clearLastVehicleInfo () {
     this.info.lastVehicle = null;
     await clearLastVehicleInfo(this.info.id);
+  }
+
+  getOnlineTime () {
+    let joined = moment(this.joinedAt);
+    let played = this.info.played + moment.duration(moment().diff(joined)).asMilliseconds();
+
+    return played;
   }
 };
 

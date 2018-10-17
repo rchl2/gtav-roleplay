@@ -10,6 +10,7 @@ mp.events.add({
     player.name = character.name;
     player.data.money = character.money;
     player.data.bank = character.bank;
+    player.character.joinedAt = new Date();
     player.health = character.health;
     spawnCharacterOnPosition(player, character);
   }
