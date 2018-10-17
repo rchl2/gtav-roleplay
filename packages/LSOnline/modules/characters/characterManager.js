@@ -13,11 +13,9 @@ exports.loadAndSpawnCharacter = async (player, characterId) => {
 };
 
 exports.findCharactersForAccount = async (accountId) => {
-  database.character.findAll({
+  return database.character.findAll({
     where: {owner: accountId}
-  }).then(characters => {
-    return characters;
-  });
+  }).then(characters => characters);
 };
 
 exports.saveCharacterBeforeQuit = async (characterId, dimension, position, lastVehicle = false, lastLogin, exitType) => {
