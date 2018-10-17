@@ -34,11 +34,7 @@ export default {
       view: 'home',
       active: 'home',
       disabled: ['webpage', 'friends', 'chars', 'settings'],
-      alerts: {
-        type: '',
-        count: 0,
-        message: ''
-      },
+      alerts: null,
       allowedAfterLogin: ['chars'],
       characters: []
     };
@@ -52,20 +48,22 @@ export default {
   watch: {
     active (newValue, oldValue) {
       if(newValue === null) return false;
-      this.view = newValue;
-      console.log(newValue)
+
       document.body.style.background = `url(../assets/${this.view}.jpg) center`;
     }
   },
   methods: {
-    handleResponse(response) {
+    handleResponse(response = {}) {
+      console.log(response)
       if(response.errors) {
-        this.alerts.count++
-        this.alerts.type = 'error'
-        this.alerts.message = response.message || "Dane logowania są nieprawidłowe"
+        this.alerts = {
+          type: 'error',
+          message: response.message || "Dane logowania są nieprawidłowe"
+        }
         return true;
       }
       if(response.characters) {
+
         this.characters = response.characters
         this.active = 'chars'
         this.disabled = this.disabled.filter((x) => !this.allowedAfterLogin.includes(x))
@@ -75,8 +73,10 @@ export default {
       return false;
     },
     pushInformation(message) {
-      this.alerts.type = 'info';
-      this.alerts.message = message;
+      this.alerts = {
+        type: 'info',
+        message
+      }
     }
   },
   components: {
@@ -85,10 +85,6 @@ export default {
     'home': () => import('./components/LoginForm.vue'),
     'chars': () => import('./components/CharacterSelect.vue'),
     AlertBox,
-  },
-  mounted() {
-    this.handleResponse({"characters":[{"id":1,"name":"Verona Gorczany DVM","owner":1,"age":61551,"sex":1,"money":24905,"position":"{\"x\":1815.94775390625,\"y\":-1137.275390625,\"z\":81.94310760498047}","dimension":0,"lastLogin":"2018-10-12T17:54:33.000Z","lastVehicle":null,"lastExitType":"disconnect","createdAt":"2018-06-01T00:30:40.000Z","updatedAt":"2018-10-12T20:41:14.000Z"},
-    {"id":1,"name":"Twoja Stara Pijana","owner":1,"age":61551,"sex":1,"money":24905,"position":"{\"x\":1815.94775390625,\"y\":-1137.275390625,\"z\":81.94310760498047}","dimension":0,"lastLogin":"2018-10-12T17:54:33.000Z","lastVehicle":null,"lastExitType":"disconnect","createdAt":"2018-06-01T00:30:40.000Z","updatedAt":"2018-10-12T20:41:14.000Z"}]});
   }
 }
 </script>

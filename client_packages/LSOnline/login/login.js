@@ -6,7 +6,7 @@ const Overlay = require('./LSOnline/util/overlay');
 /**
  * Pass response to the browser.
  */
-const handleResponse = response => setTimeout(() => browser.inject(`handleResponse(${response})`), 1000);
+const handleResponse = response => browser.inject(`handleResponse(${response})`);
 
 /**
  * Events.

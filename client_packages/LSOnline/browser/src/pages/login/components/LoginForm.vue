@@ -9,7 +9,7 @@
                   </label>
                 </div>
                 <div class="md:w-3/5">
-                  <input class="bg-black opacity-75 appearance-none border-2 rounded w-full py-2 px-4 text-grey-lightest leading-tight outline-none border-none" id="inline-full-name" v-model="username" type="text"></input>
+                  <input class="bg-black opacity-75 appearance-none border-2 rounded w-full py-2 px-4 text-grey-lightest leading-tight outline-none border-none" id="inline-full-name" v-model="username" @input="disabled = false" type="text"></input>
                 </div>
               </div>
               <div class="md:flex md:items-center mb-6">
@@ -19,7 +19,7 @@
                   </label>
                 </div>
                 <div class="md:w-3/5">
-                  <input autocomplete="off" class="bg-black opacity-75 appearance-none border-2 rounded w-full py-2 px-4 text-grey-lightest leading-tight outline-none border-none" id="inline-password" v-model="password" type="password">
+                  <input autocomplete="off" class="bg-black opacity-75 appearance-none border-2 rounded w-full py-2 px-4 text-grey-lightest leading-tight outline-none border-none" id="inline-password" v-model="password" @input="disabled = false" type="password">
                 </div>
               </div>
               <div class="flex mt-16 flex-row flex-wrap items-start justify-around">
@@ -29,7 +29,7 @@
                     Zapamiętaj mnie
                   </span>
                 </label>
-                <button style="height: 2rem; " :class="{ 'cursor-not-allowed' : disabled, 'opacity-50' : disabled }" class="bg-white uppercase hover:bg-white-dark text-black font-bold py-1 px-2" type="button" :disabled="disabled" @click="signIn">
+                <button style="height: 2rem; " :class="{ 'cursor-not-allowed' : disabled, 'opacity-50' : disabled }" class="bg-white uppercase hover:bg-white-dark text-black font-bold py-1 px-2" type="submit" :disabled="disabled" @click="signIn">
                   Zaloguj
                 </button>
               </div>
