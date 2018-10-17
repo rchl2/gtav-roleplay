@@ -17,7 +17,7 @@ mp.events.add({
 
     let result = rp.commands.get(commandName);
 
-    if (!player.isLogged) {
+    if (!player.character) {
       return player.kick();
     }
 
@@ -56,7 +56,7 @@ mp.events.add({
   },
 
   playerChat: (player, text) => {
-    if (!player.isLogged) {
+    if (!player.character) {
       return player.kick();
     }
 

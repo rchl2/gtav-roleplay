@@ -69,10 +69,11 @@ const clearDescription = (player) => {
 exports.clearDescription = clearDescription;
 
 const prepareBeforeQuit = (player, exitType) => {
+  if (!player.character) return false;
   clearBrutallyWoundedTimers(player);
   let vehicle;
   // If this was timeout from player and he was in vehicle, save last position of this vehicle to put him back when he goes back.
-  player.vehicle ? vehicle = { id: player.vehicle.informations.id, seat: player.seat } : vehicle = undefined;
+  player.vehicle ? vehicle = { id: player.vehicle.informations.id, seat: player.seat } : vehicle = null;
   return player.character.saveBeforeQuit(player, vehicle, exitType);
 };
 
