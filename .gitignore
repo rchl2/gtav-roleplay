@@ -12,3 +12,5 @@ server.exe
 /client_packages/LSOnline/browser/dist
 /maps
 .env
+/.vscode
+conf.json
