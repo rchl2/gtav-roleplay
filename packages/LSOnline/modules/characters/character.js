@@ -6,10 +6,8 @@ class Character {
     this.info = data;
   }
 
-  async saveBeforeQuit (player, lastVehicle = false, exitType) {
-    lastVehicle
-      ? await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, lastVehicle, this.info.lastLogin, exitType)
-      : await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, undefined, this.info.lastLogin, exitType);
+  async saveBeforeQuit (player, lastVehicle = undefined, exitType) {
+    await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, lastVehicle, this.info.lastLogin, exitType);
   }
 
   updateLastLoginDate () {
