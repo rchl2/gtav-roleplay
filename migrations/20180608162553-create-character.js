@@ -24,7 +24,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      health: {
+        type: Sequelize.INTEGER,
+        defaultValue: 100
+      },
       money: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
+      bank: {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
@@ -32,6 +40,10 @@ module.exports = {
         type: Sequelize.TEXT
       },
       dimension: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
+      played: {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
