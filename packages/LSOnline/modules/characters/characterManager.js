@@ -2,7 +2,6 @@
 
 const logger = require('../utils/logger');
 const database = require('../database/database');
-
 exports.loadAndSpawnCharacter = async (player, characterId) => {
   const character = await database.character.findById(characterId).then(character => {
     return character.dataValues;
@@ -13,21 +12,23 @@ exports.loadAndSpawnCharacter = async (player, characterId) => {
 };
 
 exports.findCharactersForAccount = async (accountId) => {
-  database.character.findAll({
+  return database.character.findAll({
     where: {owner: accountId}
-  }).then(characters => {
-    return characters;
-  });
+  }).then(characters => characters);
 };
 
-exports.saveCharacterBeforeQuit = async (characterId, dimension, position, lastVehicle = false, lastLogin, exitType) => {
+exports.saveCharacterBeforeQuit = async (characterId, dimension, position, lastVehicle = false, lastLogin, exitType, health, played, money, bank) => {
   database.character.findById(characterId).then(character => {
     character
       .update({
         position: JSON.stringify(position),
         dimension: dimension,
         lastLogin: lastLogin,
-        lastExitType: exitType
+        lastExitType: exitType,
+        played,
+        bank,
+        money,
+        health
       })
       .then((character) => {
         logger('character', `Saved character "${character.name}" (ID: ${character.id} / Owner: ${character.owner}) data before quit.`, 'info');

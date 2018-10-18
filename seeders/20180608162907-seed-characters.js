@@ -7,7 +7,7 @@ module.exports = {
     return queryInterface.bulkInsert('Characters', [{
       name: faker.name.findName(),
       owner: 1,
-      age: faker.random.number(),
+      age: faker.random.number(15, 100),
       sex: 1,
       money: faker.random.number(),
       dimension: 0,

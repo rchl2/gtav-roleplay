@@ -12,7 +12,7 @@
         <table class="text-white mt-6 font-sans leading-normal text-base">
           <tr class="border-b-2 border-t-2 border-table">
             <td style="width: 12rem;" class="uppercase">Wiek:</td>
-            <td class="text-right">24</td>
+            <td class="text-right">{{ selection.age }}</td>
           </tr>
           <tr class="border-b-2 border-t-2 border-table">
             <td style="width: 12rem;" class="uppercase">Płeć:</td>
@@ -33,7 +33,7 @@
       <div class="flex flex-row items-center justify-between flex-nowrap text-xl w-full h-16">
         <div class="uppercase font-sans text-center">
           <h2 class="font-thin text-grey-light">Zdrowie</h2>
-          <p class="text-white">100%</p>
+          <p class="text-white">{{ selection.health }}%</p>
         </div>
         <div class="uppercase font-sans text-center">
           <h2 class="font-thin text-grey-light">Gotówka</h2>
@@ -94,7 +94,7 @@ export default {
   },
   computed: {
     selection () {
-      return this.characters[this.index]
+      return this.characters[this.index] || {}
     }
   },
   methods: {
@@ -113,7 +113,7 @@ export default {
       return diff;
     },
     getPlayed() {
-      let miliseconds = moment.duration(this.selection.age)
+      let miliseconds = moment.duration(this.selection.played)
       let hours = miliseconds.asHours().toFixed(0);
       let minutes = moment.duration(miliseconds-hours*3600000).asMinutes().toFixed(0);
 
