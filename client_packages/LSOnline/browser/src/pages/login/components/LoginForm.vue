@@ -64,9 +64,10 @@ export default {
     };
   },
   methods: {
-    signIn() {
-      this.disabled = true;
-      mp.trigger('loginButtonClicked', this.username, this.password);
+    signIn(e) {
+      e.preventDefault()
+     this.disabled = true;
+     mp.trigger('loginButtonClicked', this.username, this.password);
     }
   }
 }

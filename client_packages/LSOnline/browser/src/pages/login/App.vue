@@ -10,7 +10,7 @@
         <navbar :active.sync="active" :disabled="disabled"></navbar>
       </div>
       <div class="flex flex-row h-full justify-center items-center font-sans">
-        <div :is="view" ref="currentView" v-bind="props"></div>
+        <div :is="active" ref="currentView" v-bind="props"></div>
       </div>
     </div>
     <transition name="fade">
@@ -31,7 +31,6 @@ export default {
   name: "loginParent",
   data() {
     return {
-      view: 'home',
       active: 'home',
       disabled: ['webpage', 'friends', 'chars', 'settings'],
       alerts: null,
@@ -41,7 +40,7 @@ export default {
   },
   computed: {
     props () {
-      if(this.view === 'chars') return { characters: this.characters }
+      if(this.active === 'chars') return { characters: this.characters }
       return {};
     }
   },
@@ -49,7 +48,7 @@ export default {
     active (newValue, oldValue) {
       if(newValue === null) return false;
 
-      document.body.style.background = `url(../assets/${this.view}.jpg) center`;
+      document.body.style.background = `url(../assets/${newValue}.jpg) center`;
     }
   },
   methods: {
@@ -62,7 +61,6 @@ export default {
         return true;
       }
       if(response.characters) {
-
         this.characters = response.characters
         this.active = 'chars'
         this.disabled = this.disabled.filter((x) => !this.allowedAfterLogin.includes(x))
