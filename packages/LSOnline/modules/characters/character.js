@@ -8,7 +8,7 @@ class Character {
 
   async saveBeforeQuit (player, lastVehicle = null, exitType) {
     const played = this.getOnlineTime();
-    await saveCharacterBeforeQuit(this.info.id, player.dimension, player.position, lastVehicle, this.info.lastLogin, exitType, player.health, played, player.money, player.bank);
+    await saveCharacterBeforeQuit(this.info.id, player.dimension, { position: player.position, heading: player.heading }, lastVehicle, this.info.lastLogin, exitType, player.health, played, player.money, player.bank);
   }
 
   updateLastLoginDate () {
