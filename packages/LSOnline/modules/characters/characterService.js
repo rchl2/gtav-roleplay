@@ -11,7 +11,7 @@ const { getVehicleById } = require('../vehicles/vehicleService');
 const spawnCharacterOnPosition = (player, character) => {
   let randomSpawn = randomSpawns[Math.floor(Math.random() * randomSpawns.length)];
 
-  if (character.position) {
+  if (character.position.position) {
     const charPosition = JSON.parse(character.position);
 
     player.position = new mp.Vector3(charPosition.position.x, charPosition.position.y, charPosition.position.z);
